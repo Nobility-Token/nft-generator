@@ -1,5 +1,10 @@
 .gradle
 /build/
+/.idea/
+images/
+/output/metadata/
+output
+output.json
 
 # Ignore Gradle GUI config
 gradle-app.setting
