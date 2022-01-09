@@ -18,10 +18,11 @@ public class Generator {
     public void createNFT(int index) {
 
         final String baseUrl = "https://nft.nobilitytoken.com/knights/image/";
+        final int totalLayers = 9;
 
         List<Attribute> attributes = new ArrayList<>();
 
-        for (int i = 0; i <= 8; i++) {
+        for (int i = 0; i <= totalLayers - 1; i++) {
             AttributeType currentType = AttributeType.values()[i];
             if (i == 0)
                 attributes.add(getAttribute(currentType, null));
