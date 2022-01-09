@@ -1,17 +1,7 @@
 package com.patrity;
 
 import lombok.AllArgsConstructor;
-/*
-"./images/1.backgrounds",
-                "./images/2.glow",
-                "./images/3.sword",
-                "./images/4.akimbo",
-                "./images/5.body",
-                "./images/6.breastplate",
-                "./images/7.pauldron",
-                "./images/8.helmet",
-                "./images/9.front");
- */
+
 @AllArgsConstructor
 public enum AttributeType {
     BACKGROUND("./images/1.backgrounds"),
