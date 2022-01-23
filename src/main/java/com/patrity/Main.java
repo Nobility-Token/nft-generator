@@ -2,10 +2,9 @@ package com.patrity;
 
 public class Main {
 
-
     public Main() {
         final Generator generator = new Generator();
-        final int totalToGenerate = 5;
+        final int totalToGenerate = 4444;
         long startTime = System.currentTimeMillis();
         long lastTime;
         for (int i = 1; i <= totalToGenerate; i++) {

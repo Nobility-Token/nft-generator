@@ -7,16 +7,23 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class Generator {
-    private Random random = new Random();
+    private final Random random = new Random();
+    private final ExecutorService service = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    private static final Path BASE_OUTPUT_PATH = Paths.get("output");
 
     public void createNFT(int index) {
-
         final String baseUrl = "https://nft.nobilitytoken.com/knights/image/";
         final int totalLayers = 9;
 
@@ -59,7 +66,7 @@ public class Generator {
             } else {
                 return file.getName().startsWith(rarityChar);
             }
-        }).collect(Collectors.toList());
+        }).toList();
 
         if (filtered.size() == 0) {
             return null;
@@ -70,17 +77,23 @@ public class Generator {
 
     @SneakyThrows
     private void generateImage(Knight knight) {
+        service.submit(() -> {
+            List<BufferedImage> imgList = getAttributeImages(knight);
+            BufferedImage combined = new BufferedImage(2000, 2000, BufferedImage.TYPE_INT_ARGB);
+            Graphics gfx = combined.getGraphics();
 
-        List<BufferedImage> imgList = getAttributeImages(knight);
+            imgList.forEach((img) -> {
+                gfx.drawImage(img, 0, 0, null);
+            });
 
-        BufferedImage combined = new BufferedImage(2000, 2000, BufferedImage.TYPE_INT_ARGB);
-
-        Graphics gfx = combined.getGraphics();
-
-        imgList.forEach((img) -> {
-            gfx.drawImage(img, 0, 0, null);
+            try {
+                Path path = BASE_OUTPUT_PATH.resolve("images");
+                if (!Files.exists(path)) Files.createDirectories(path);
+                ImageIO.write(combined, "PNG", path.resolve(knight.id + ".png").toFile());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
-        ImageIO.write(combined, "PNG", new File("./output/images", knight.id + ".png"));
     }
 
     @SneakyThrows
@@ -95,6 +108,8 @@ public class Generator {
 
     @SneakyThrows
     private void generateMetaData(Knight knight) {
-        Utils.mapper.writeValue(new File("./output/metadata/" + knight.id + ".json"), knight);
+        Path path = BASE_OUTPUT_PATH.resolve("metadata");
+        if (!Files.exists(path)) Files.createDirectories(path);
+        Utils.mapper.writeValue(path.resolve(knight.id + ".json").toFile(), knight);
     }
 }
