@@ -12,7 +12,7 @@ public enum Rarity {
     E("e", 3),
     F("f", 1);
 
-    private static final Rarity[] VALUES = values();
+    public static final Rarity[] VALUES = values();
 
     public String prefix;
     public int weight;

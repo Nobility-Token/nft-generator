@@ -15,21 +15,20 @@ import java.util.*;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class Generator {
+    public static final int TOTAL_LAYERS = 9;
     private final Random random = new Random();
     private final ExecutorService service = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     private static final Path BASE_OUTPUT_PATH = Paths.get("output");
 
     public void createNFT(int index) {
         final String baseUrl = "https://nft.nobilitytoken.com/knights/image/";
-        final int totalLayers = 9;
 
         List<Attribute> attributes = new ArrayList<>();
 
-        for (int i = 0; i <= totalLayers - 1; i++) {
+        for (int i = 0; i <= TOTAL_LAYERS - 1; i++) {
             AttributeType currentType = AttributeType.values()[i];
             if (i == 0)
                 attributes.add(getAttribute(currentType, null));
