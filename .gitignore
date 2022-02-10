@@ -5,6 +5,7 @@ images/
 /output/metadata/
 output
 output.json
+metadata/
 
 # Ignore Gradle GUI config
 gradle-app.setting
