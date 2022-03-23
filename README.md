@@ -10,6 +10,7 @@ This project is used to generate our custom Knights NFT Collection
 ## Authors
 
 - [@Patrity (Tony Costanzo)](https://www.github.com/Patrity)
+- [@rmcmk](https://github.com/rmcmk)
 
 
 ## Run Locally
