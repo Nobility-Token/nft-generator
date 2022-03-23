@@ -1,4 +1,4 @@
-package com.patrity;
+package com.patrity.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

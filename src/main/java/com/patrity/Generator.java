@@ -1,5 +1,9 @@
 package com.patrity;
 
+import com.patrity.model.Attribute;
+import com.patrity.model.AttributeType;
+import com.patrity.model.Knight;
+import com.patrity.model.Rarity;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 

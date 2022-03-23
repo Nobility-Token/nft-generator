@@ -1,9 +1,8 @@
 package com.patrity.old;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.patrity.AttributeType;
-import com.patrity.Rarity;
+import com.patrity.model.AttributeType;
+import com.patrity.model.Rarity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

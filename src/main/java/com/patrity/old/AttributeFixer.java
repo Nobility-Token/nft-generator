@@ -1,8 +1,8 @@
 package com.patrity.old;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.patrity.Attribute;
-import com.patrity.Knight;
+import com.patrity.model.Attribute;
+import com.patrity.model.Knight;
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;
 

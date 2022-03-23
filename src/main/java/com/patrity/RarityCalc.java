@@ -1,6 +1,10 @@
 package com.patrity;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.patrity.model.Attribute;
+import com.patrity.model.AttributeType;
+import com.patrity.model.Knight;
+import com.patrity.model.Rarity;
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;
 

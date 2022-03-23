@@ -1,4 +1,4 @@
-package com.patrity;
+package com.patrity.model;
 
 import lombok.AllArgsConstructor;
 
